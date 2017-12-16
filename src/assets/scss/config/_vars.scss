@@ -1,0 +1,37 @@
+$margin: 176;
+$percent-gap: ($margin / 1920 * 100) * 2;
+$header-height: 80px;
+
+
+/*  Fonts
+=============================================*/
+$font-size: 14px;
+$font-default: 'Open Sans', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
+
+
+
+/*  Colors
+=============================================*/
+$primary: #212121;
+$primary--light: #484848;
+$primary--dark: #000000;
+
+$secondary: #d50000;
+$secondary--light: #ff5131;
+$secondary--dark: #9b0000;
+
+/* SCREEN SIZES
+=============================================*/
+$screen-mc: 480px;
+$screen-xs: 540px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-mg: 1050px;
+$screen-lg: 1200px;
+$screen-xg: 1400px;
+
+/* UTILS
+=============================================*/
+$header-desk-height: 56px;
+$footer-desk-height: 36px;

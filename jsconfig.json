@@ -1,0 +1,27 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "_root/*": ["src/*"],
+      "_app/*": ["src/app/*"],
+      "_common/*": ["src/app/common/*"],
+      "_services/*": ["src/app/services/*"],
+      "_store/*": ["src/store/*"],
+      "_views/*": ["src/app/views/*"],
+      "_config/*": ["src/config/*"],
+      "_assets/*": ["src/assets/*"],
+      "_img/*": ["src/assets/images/*"],
+      "_fonts/*": ["src/assets/fonts/*"],
+      "_sass/*": ["src/assets/scss/*"],
+      "_sass_config/*": ["src/assets/scss/config/*"],
+      "_sass_comp/*": ["src/assets/scss/components/*"],
+      "_npm/*": ["node_modules/*"]
+    }
+  }
+}

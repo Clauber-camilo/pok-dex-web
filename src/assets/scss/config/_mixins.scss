@@ -1,0 +1,110 @@
+@import "./vars";
+
+// Mixin Media Query
+@mixin media-q($screen: $screen-sm, $type: max) {
+    @media screen and (#{$type}-width: $screen) {
+        @content;
+    }
+}
+
+// /* CONVERT PIXELS IN REM
+// =============================================*/
+// /*
+// *
+// *
+// */
+@function rem($pixels, $base: $font-size) {
+	@return ($pixels / $base) * 1rem;
+}
+
+// /* ALIGN ITENS AROUND
+// =============================================*/
+// /*
+// *
+// *
+// */
+@mixin align-childs-around($n-items, $distance, $after: false, $start-index: 0) {
+  $deg-items: 360 / $n-items;
+
+  @if $n-items == 1 {
+    & > :first-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  @else {
+    @for $i from 1 through $n-items {
+      & > :nth-of-type(#{$i + $start-index}) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:
+          translate(-50%, -50%)
+          rotate(($i - 1) * $deg-items * 1deg)
+          translateY(-$distance)
+          rotate(($i - 1) * $deg-items * -1deg);
+
+        @if $after {
+          &:after {
+            position: inherit;
+            top: inherit;
+            left: inherit;
+            transform:
+              translate(-50%, -50%)
+              rotate(($i - 1) * $deg-items * 1deg)
+              translateY(calc((#{$distance} / 2) + 20%))
+              rotate(($i - 1) * $deg-items * -1deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin animation-path(){
+      @for $i from 1 through 8  {
+          &:nth-child(#{$i}) {
+              stroke-dasharray: 358;
+              stroke-dashoffset: 358;
+          }
+      }
+}
+
+// /* TO LIMIT NUMBER OF CHARACTERS
+// =============================================*/
+@mixin ellipsis ($line: 1, $lineHeight: 1) {
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: 1em * $lineHeight * $line; /* Fallback for non-webkit */
+    margin: 0 auto;
+    line-height: $lineHeight;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// /* Loader
+// =============================================*/
+@mixin loader ($width: 100vw, $height: 100vh, $lwidth: 30vw, $lheight: 30vh, $position: fixed) {
+    width: $width;
+    height: $height;
+
+    position: $position;
+    top: 0;
+    left: 0;
+
+    background: rgba(0,0,0,0.5);
+
+    & :first-child {
+        width: $lwidth;
+        height: $lheight;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
