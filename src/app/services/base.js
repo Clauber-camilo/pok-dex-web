@@ -10,7 +10,7 @@ class BaseService {
         const params = (method === 'get') ? data : {}
 
         return axios({ method, url, data, params, responseType })
-            .then(response => response)
+            .then(response => response.data)
             .catch(this.handleError)
     }
 

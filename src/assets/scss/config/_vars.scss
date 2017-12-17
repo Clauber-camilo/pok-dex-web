@@ -21,6 +21,11 @@ $secondary: #d50000;
 $secondary--light: #ff5131;
 $secondary--dark: #9b0000;
 
+$background-primary: #E1E2E1;
+$background-secondary: #F5F5F6;
+
+$white: #fff;
+
 /* SCREEN SIZES
 =============================================*/
 $screen-mc: 480px;
@@ -35,3 +40,5 @@ $screen-xg: 1400px;
 =============================================*/
 $header-desk-height: 56px;
 $footer-desk-height: 36px;
+
+$raised: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);

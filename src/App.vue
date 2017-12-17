@@ -10,12 +10,16 @@
 </template>
 
 <script>
+    import interceptor from '@/app/common/runs/interceptor'
     import HeaderTemplate from '_components/templates/HeaderTemplate'
 
     export default {
         name: 'app',
         components: {
             HeaderTemplate
+        },
+        created () {
+            interceptor()
         }
     }
 </script>

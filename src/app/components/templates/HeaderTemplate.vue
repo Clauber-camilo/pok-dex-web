@@ -4,7 +4,7 @@
             class="header-template__toolbar toolbar"
             textColor="white"
             :removeNavIcon="true"
-
+            :loading="isLoading"
         >
             <div class="toolbar__body">
                 <div class="toolbar__body__logo" ref="logo">
@@ -22,6 +22,11 @@
         name: 'header-template',
         data () {
             return {}
+        },
+        computed: {
+            isLoading () {
+                return this.$store.state.toggle.loading
+            }
         },
         components: {
             UiToolbar
