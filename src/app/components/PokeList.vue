@@ -1,6 +1,8 @@
 <template>
     <div class="poke-list">
-        <poke v-for="(n, i) in 20" :key="n" :index="i"></poke>
+        <template v-if="pokemons">
+            <poke v-for="(n, i) in 20" :key="n" :index="i"></poke>
+        </template>
     </div>
 </template>
 
@@ -13,6 +15,11 @@
         data () {
             return {
                 page: this.$route.params.page
+            }
+        },
+        computed: {
+            pokemons () {
+                return this.$store.state.poke.list
             }
         },
         components: {
