@@ -10,11 +10,11 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: { name: 'poke-list' },
-            name: 'poke-list',
             component: Pokedex,
+            redirect: { name: 'poke-list' },
             children: [
                 {
+                    name: 'poke-list',
                     path: '/pokemon/:page?',
                     component: () => import('_components/PokeList.vue')
                 }
