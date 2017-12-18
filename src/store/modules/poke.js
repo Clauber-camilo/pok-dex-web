@@ -2,18 +2,15 @@ import PokemonService from '_services/pokemon'
 
 export default {
     state: {
-        list: null
+        list: null,
+        selectedPoke: null
     },
     mutations: {
         setList (state, data) {
             state.list = data
         },
-        updateValue (state, poke) {
-            const index = state.list.findIndex(el => el.name === poke.name)
-            state.list[index] = poke
-        },
-        resetList (state) {
-            state.list = []
+        setPoke (state, poke) {
+            state.selectedPoke = poke
         }
     },
     actions: {
@@ -21,15 +18,12 @@ export default {
             PokemonService.list(page)
                 .then(response => {
                     commit('setList', response.results)
-                    response.results.map(
-                        poke => PokemonService.getOne(poke.url)
-                            .then(res => {
-                                commit('updateValue', res)
-                            })
-                    )
                 })
-                .catch(() => {
-                    commit('resetList')
+        },
+        setPoke ({ commit }, poke) {
+            return PokemonService.getOne(poke.url)
+                .then(response => {
+                    commit('setPoke', response)
                 })
         }
     }

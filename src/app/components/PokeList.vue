@@ -1,7 +1,7 @@
 <template>
     <div class="poke-list">
         <template v-if="pokemons">
-            <poke v-for="(n, i) in 20" :key="n" :index="i"></poke>
+            <poke v-for="(poke, index) in pokemons" :key="index" :poke="poke"></poke>
         </template>
     </div>
 </template>

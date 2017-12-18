@@ -39,6 +39,13 @@
     @import '~_scss_config/vars';
 
     .header-template {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        z-index: 100;
+
         &__toolbar {
             background-color: $primary;
 

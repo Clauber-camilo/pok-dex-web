@@ -1,6 +1,6 @@
 export default {
     state: {
-        confirm: false
+        base: false
     },
     mutations: {
         toggleModal (state, toggle) {
@@ -11,10 +11,8 @@ export default {
         }
     },
     actions: {
-        toggleModal (context, toggle) {
-            context.commit('toggleModal', toggle)
-
-            return context.state[toggle]
+        toggleModal ({ commit }, toggle) {
+            commit('toggleModal', toggle)
         },
         setToggleModal ({ commit }, data) {
             commit('setModal', data)
