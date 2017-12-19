@@ -17,6 +17,11 @@ export default new Router({
                     name: 'poke-list',
                     path: '/pokemon/:page?',
                     component: () => import('_components/PokeList.vue')
+                },
+                {
+                    name: 'poke-items',
+                    path: '/items/:page?',
+                    component: () => import('_components/PokeItems.vue')
                 }
             ]
         }

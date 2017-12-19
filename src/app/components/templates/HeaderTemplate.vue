@@ -9,7 +9,15 @@
             <div class="toolbar__body">
                 <div class="toolbar__body__logo" ref="logo">
                 </div>
-                Pokedex Web
+                <div class="toolbar__body__title">
+                    Pokedex Web
+                </div>
+
+                <div class="toolbar__body__items">
+                    <router-link class="link" :to="{ name: 'poke-list'}"> pokémons </router-link>
+                    <router-link class="link" :to="{ name: 'poke-items'}"> items </router-link>
+                </div>
+
             </div>
         </UiToolbar>
     </div>
@@ -37,6 +45,7 @@
 
 <style lang="scss" scoped>
     @import '~_scss_config/vars';
+    @import '~_scss_config/mixins';
 
     .header-template {
         position: fixed;
@@ -77,6 +86,27 @@
 
                         &:hover {
                             transform: rotateY(180deg);
+                        }
+                    }
+
+                    &__title {
+                        padding-right: 20px;
+                        border-right: 1px solid $background-primary;
+                    }
+
+                    &__items {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        font-size: rem(14px);
+
+                        padding-left: 20px;
+
+                        .link {
+                            &:last-child {
+                                margin-left: 20px;
+                            }
                         }
                     }
                 }
