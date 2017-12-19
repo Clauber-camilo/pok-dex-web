@@ -1,18 +1,18 @@
 <template>
-    <div class="poke-list">
-        <div class="poke-list__content">
-            <template v-if="pokemons">
-                <poke v-for="(poke, index) in pokemons" :key="index" :poke="poke"></poke>
+    <div class="poke-items">
+        <div class="poke-items__content">
+            <template v-if="items">
+                <item v-for="(item, index) in items" :key="index" :item="item"></item>
             </template>
 
         </div>
 
-        <div v-if="pokemons" class="poke-list__pagination">
-            <my-pagination store="poke"></my-pagination>
+        <div v-if="items" class="poke-items__pagination">
+            <my-pagination store="items"></my-pagination>
         </div>
 
-        <div class="poke-list__overlay" v-if="isLoading">
-            <ui-progress-circular :size="50" color="white" class="poke-list__overlay__progress"></ui-progress-circular>
+        <div class="poke-items__overlay" v-if="isLoading">
+            <ui-progress-circular :size="50" color="white" class="poke-items__overlay__progress"></ui-progress-circular>
         </div>
     </div>
 </template>
@@ -20,41 +20,41 @@
 <script>
     import { mapActions } from 'vuex'
     import { UiProgressCircular } from 'keen-ui'
-    import Poke from '_components/Poke'
+    import Item from '_components/Item.vue'
     import MyPagination from '_components/MyPagination'
 
     export default {
-        name: 'poke-list',
+        name: 'poke-items',
         data () {
             return {
                 page: this.$route.params.page
             }
         },
         computed: {
-            pokemons () {
-                return this.$store.state.poke.list
+            items () {
+                return this.$store.state.items.list
             },
             isLoading () {
                 return this.$store.state.toggle.loading
             }
         },
         components: {
+            Item,
             MyPagination,
-            Poke,
             UiProgressCircular
         },
         watch: {
             $route () {
-                this.getPokemons(this.$route.params.page)
+                this.getItems(this.$route.params.page)
             }
         },
         methods: {
             ...mapActions([
-                'getPokemons'
+                'getItems'
             ])
         },
         created () {
-            this.getPokemons(this.page)
+            this.getItems(this.page)
         }
     }
 
@@ -63,7 +63,7 @@
 <style lang="scss" scoped>
     @import '~_scss_config/vars';
 
-    .poke-list {
+    .poke-items {
 
         &__content {
             display: flex;
