@@ -14,6 +14,12 @@
 
     export default {
         name: 'my-pagination',
+        props: {
+            store: {
+                type: String,
+                required: true
+            }
+        },
         data () {
             return {
                 page: this.$route.params.page
@@ -24,7 +30,7 @@
         },
         computed: {
             count () {
-                return this.$store.state.poke.count
+                return this.$store.state[this.store].count
             },
             total () {
                 return Math.ceil(this.count / 20) // 20 is the number of pokemons showed per page
@@ -32,7 +38,8 @@
         },
         methods: {
             setPage (page) {
-                this.$router.push(`/pokemon/${page}`)
+                // this.$router.push(`${this.$route.path}/${page}`)
+                this.$router.push({ name: this.$route.name, params: { page } })
             }
         }
     }
@@ -63,15 +70,20 @@
 
                 margin: 10px;
                 border-radius: 2px;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
                 transition: background-color .2s ease;
 
                 &:hover {
                     background-color: lighten($primary, 10)
+                }
+
+                a {
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
                 }
             }
         }
