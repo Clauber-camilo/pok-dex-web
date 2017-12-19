@@ -3,7 +3,8 @@ import PokemonService from '_services/pokemon'
 export default {
     state: {
         list: null,
-        selectedPoke: null
+        selectedPoke: null,
+        count: null
     },
     mutations: {
         setList (state, data) {
@@ -11,6 +12,9 @@ export default {
         },
         setPoke (state, poke) {
             state.selectedPoke = poke
+        },
+        setCount (state, count) {
+            state.count = count
         }
     },
     actions: {
@@ -18,6 +22,7 @@ export default {
             PokemonService.list(page)
                 .then(response => {
                     commit('setList', response.results)
+                    commit('setCount', response.count)
                 })
         },
         setPoke ({ commit }, poke) {
