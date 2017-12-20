@@ -1,7 +1,7 @@
 <template>
     <div class="poke" @click="selectPokemon">
         <div class="poke__image"
-            :style="{'background-image' : `url(${ require('_img/no-image.jpg')})`}"
+            :style="{'background-image' : `url(${ getImage ? getImage : require('_img/no-image.jpg')})`}"
         >
         </div>
         <div class="poke__name">
@@ -19,6 +19,17 @@
             poke: {
                 type: Object,
                 required: true
+            }
+        },
+        data () {
+            return {
+                splitUrl: this.poke.url.split('/')
+            }
+        },
+        computed: {
+            getImage () {
+                const splitUrl = this.poke.url.split('/')
+                return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${splitUrl[splitUrl.length - 2]}.png`
             }
         },
         methods: {
@@ -75,8 +86,8 @@
         }
 
         &__image {
-            width: 100%;
-            height: 200px;
+            width: 100px;
+            height: 100px;
 
             background-position: center;
             background-size: cover;
