@@ -57,11 +57,13 @@
 
         &__toolbar {
             background-color: $primary;
+            padding: 0 1rem;
 
             .toolbar {
                 &__body {
                     display: flex;
                     align-items: center;
+                    flex: 1;
 
                     &__logo {
                         background-image: url('~_img/poke_ball_icon.svg');
@@ -92,6 +94,10 @@
                     &__title {
                         padding-right: 20px;
                         border-right: 1px solid $background-primary;
+
+                        @include media-q($screen-xs) {
+                            display: none;
+                        }
                     }
 
                     &__items {
@@ -102,6 +108,11 @@
                         font-size: rem(14px);
 
                         padding-left: 20px;
+
+                        @include media-q($screen-xs) {
+                            width: 100%;
+                            justify-content: flex-end;
+                        }
 
                         .link {
                             &:last-child {
