@@ -25,6 +25,7 @@
                     <div class="body__statics__title">
                         Statistics
                     </div>
+                    <stats-chart></stats-chart>
                     <ul>
                         <li v-for="(s, index) in poke.stats" :key="index">
                             {{s.stat.name}} : {{s.base_stat}}
@@ -72,6 +73,7 @@
 <script>
     import { mapState, mapActions } from 'vuex'
     import { UiModal } from 'keen-ui'
+    import StatsChart from '_components/StatsChart'
 
     export default {
         name: 'modal',
@@ -85,7 +87,8 @@
             })
         },
         components: {
-            UiModal
+            UiModal,
+            StatsChart
         },
         watch: {
             modalBase () {
