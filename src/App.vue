@@ -8,7 +8,7 @@
             <stats-chart
                 class="stats"
                 :options="{
-                    width: 700,
+                    width: 600,
                     maxValue: 400
                 }"
             ></stats-chart>
